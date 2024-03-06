@@ -15,42 +15,10 @@ public class Program {
 
 		File path = new File(home + strPath);
 		
-
-		File[] folders = path.listFiles(File::isDirectory);
-
-		System.out.println("FOLDERS:");
-
-		for (File folder : folders) {
-
-			System.out.println(folder);
-
-		}
+		System.out.println("getPath: " + path.getPath());
+		System.out.println("getParent: " + path.getParent());
+		System.out.println("getName: " + path.getName());
 		
-
-		File[] files = path.listFiles(File::isFile);
-
-		System.out.println("FILES:");
-
-		for (File file : files) {
-
-			System.out.println(file);
-
-		}
-		
-		try {
-		
-		String subdir = "Subdir";
-		
-		boolean success = new File(strPath + File.separator + subdir).mkdir();
-		
-		System.out.println();
-		System.out.println("Directory created successfully: " + success);
-		
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
 		sc.close();
 
 	}
