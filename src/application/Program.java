@@ -1,26 +1,27 @@
 package application;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Program {
 	public static void main(String[] args) {
 		
-		String home = System.getProperty("user.home");
-		String path = home + "/temp/ws-eclipse/Testing/in.txt";	
+		String[] lines = new String[] {"Good morning","Good afternoon","Good night"};
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+		String home = System.getProperty("user.home");
+		String path = home + "/temp/ws-eclipse/Testing/out.txt";	
+		
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
 			
-			String line = br.readLine();
-			
-			while (line != null) {
-				System.out.println(line);
-				line = br.readLine();
+			for (String line : lines) {		
+				bw.write(line);
+				bw.newLine();
 			}
+
 		} catch (IOException e) {
-			System.out.println("Error: " + e.getMessage());
-			
+			e.printStackTrace();;
 		}
+
 	}
 }
